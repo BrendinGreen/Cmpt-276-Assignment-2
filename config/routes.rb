@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'say/hello'
+
+  get 'say/goodbye'
+
+  get 'say/index'
+
+  match	':controller(/:action(/:id))',	:via	=>	:get
+  match	':controller(/:action(/:id))',	:via	=>	:post
+
   resources :widgets
 
   # The priority is based upon order of creation: first created -> highest priority.
