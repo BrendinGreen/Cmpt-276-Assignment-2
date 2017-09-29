@@ -10,7 +10,7 @@ window.onload = function() {
 function calculateValues(){
 
     // Holds all of the threshold values
-    var thresholds = getThresholds()
+    var thresholds = getThresholds();
     var errorFlag = validation(thresholds);
 
     // Holds the number of steps the histogram will display for each category
@@ -32,7 +32,7 @@ function setProgress(errorFlag, dataArray){
     // Set DOM objects
     for (var k = 0; k < dataArray.length; k++){
         document.getElementById("result" + k + "progress").value = (errorFlag) ? 0 : dataArray[k];
-        document.getElementById("result" + k + "progress").max = "" + dataArray.reduce(function (p1, p2) { return Math.max(p1, p2) }) ;
+        document.getElementById("result" + k + "progress").max = "" + dataArray.reduce(function (p1, p2) { return Math.max(p1, p2) });
     }
 }
 
