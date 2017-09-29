@@ -2,6 +2,8 @@
     background-color: #eaf1f3;
     border-radius: 5px;
     border: 1px solid #d5e5ea;
+    padding: 10px;
+    margin:20px;
 }
 
 .red-title {
@@ -16,57 +18,46 @@
     margin: 5px;
 }
 
+/* Flex properties - Responsiveness */
 .flexbox-container {
     display: -ms-flex;
     display: -webkit-flex;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
+    flex-direction: row;
+}
+.col {
+    flex: 1;
 }
 
-.flexbox-container > div {
-    width: 50%;
-    padding: 10px;
-}
-
-.flexbox-container > div:first-child {
-    margin-right: 20px;
-}
-
+/* Forces labels and inputs to play nice */
 label {
     display:inline-block;
     width:100px;
 }
-
 input {
     text-align:right;
 }
 
+/* Gets rid of number wheel for input */
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
-
 input[type=number] {
     -moz-appearance:textfield;
 }
 
+/* Adds space for input sections */
 .input-w {
     padding-bottom: 30px;
     padding-left: 30px;
 }
 
-.hist-entry {
-    display:inline-block;
-    width:100px;
-}
-
+/* Adds space for progress sections */
 .hist-element {
-
     padding-bottom: 15px;
     padding-left: 30px;
 }
