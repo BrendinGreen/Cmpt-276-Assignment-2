@@ -1,0 +1,38 @@
+<%= form_for(@enroll) do |f| %>
+  <% if @enroll.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@enroll.errors.count, "error") %> prohibited this enroll from being saved:</h2>
+
+      <ul>
+      <% @enroll.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :percentage %><br>
+    <%= f.text_field :percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :student %><br>
+    <%= f.select :student, Student.all.map { |p| [ p.name, p.id ] },
+                 :prompt => 'Select One',
+                 :required => true,
+                 :selected => (@enroll.student) ? @enroll.student.id : nil
+    %>
+  </div>
+  <div class="field">
+    <%= f.label :course %><br>
+    <%= f.select :course, Course.all.map { |p| [ p.description, p.id ] },
+                 :prompt => 'Select One',
+                 :required => true,
+                 :selected => (@enroll.course) ? @enroll.course.id : nil
+    %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
