@@ -76,12 +76,9 @@ function saveGrades(){
             url: '/enrolls/update/'+grades[grade]['id'],
             type: 'POST',
             data: { 'enroll':
-                        {'lettergrade': enrollToSave['lettergrade'], 'percentage': enrollToSave['percentage'], 'course': course['id']},
+                        {'lettergrade': enrollToSave['lettergrade'], 'percentage': enrollToSave['percentage'], 'course': course['id'], 'student': enrollToSave['student_id']},
                     'id': enrollToSave['id']
                     },
-            success: function(data){
-                alert('Success!')
-            },
             error: function(data){
                 console.log(data);
             },

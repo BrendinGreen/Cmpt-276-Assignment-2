@@ -20,7 +20,7 @@
           <td><%= enroll.student.name %></td>
           <td><%= enroll.course.name %></td>
           <td><%= enroll.percentage %></td>
-          <td><%= (enroll.lettergrade) ? @enroll.lettergrade : 'Not yet set' %></td>
+          <td><%= (enroll.lettergrade) ? enroll.lettergrade : 'Not yet set' %></td>
 
           <td><%= link_to 'Show',
                           enroll,

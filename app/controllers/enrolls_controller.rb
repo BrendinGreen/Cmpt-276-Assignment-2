@@ -42,15 +42,13 @@ class EnrollsController < ApplicationController
   # PATCH/PUT /enrolls/1
   # PATCH/PUT /enrolls/1.json
   def update
-    print(params)
-    print(@enroll.percentage)
     respond_to do |format|
       params = {:course     => Course.find(enroll_params[:course].to_i),
                 :student    => Student.find(enroll_params[:student].to_i),
                 :percentage => enroll_params[:percentage],
                 :lettergrade => (enroll_params[:lettergrade]) ? enroll_params[:lettergrade] : nil }
       if @enroll.update(params)
-        format.html { redirect_to @enroll, notice: 'Enroll was successfully updated.' }
+        format.html { redirect_to courses_url, notice: 'Enroll was successfully updated.' }
         format.json { render :show, status: :ok, location: @enroll }
       else
         format.html { render :edit }
