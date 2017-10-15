@@ -1,8 +1,8 @@
 <div class="title">Histogram Generator</div>
 <div id="invisible" data-grades="<%= @course.enrolls.to_json %>" data-course="<%= @course.to_json %>"></div>
-<div class="container row">
+<div class="flexbox-container">
 
-  <div class="container col-sm-6">
+  <div class="container-color">
 
     <div class="red-title">Lower Bounds</div>
 
@@ -68,7 +68,7 @@
 
   </div>
 
-  <div class="container col-sm-6">
+  <div class="container-color">
 
     <div class="red-title">Histogram</div>
 
@@ -128,7 +128,8 @@
       <progress value="0" max="100" id="result0progress"></progress>
     </div>
 
-    <button class="btn btn-primary col-sm-12" onclick="saveGrades()">Save</button>
+    <button class="btn btn-primary" style="width:100%" onclick="saveGrades()">Save</button>
+
   </div>
 </div>
 
