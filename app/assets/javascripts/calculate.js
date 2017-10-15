@@ -4,11 +4,12 @@ var grades = $('#invisible').data('grades');
 var course = $('#invisible').data('course');
 var letters = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'F'].reverse();
 
-window.onload = function() {
+$(document).ready(function () {
     calculateValues();
-};
+});
 
 function calculateValues(){
+
     // Holds all of the threshold values
     var thresholds = getThresholds();
     var errorFlag = validation(thresholds);
@@ -87,5 +88,4 @@ function saveGrades(){
             }
         })
     }
-
 }
