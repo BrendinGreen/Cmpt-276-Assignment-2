@@ -1,14 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="container-color">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
+  <h1>
+    <strong>Name:</strong>
+    <%= @student.name %>
+  </h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @student.email %>
-</p>
+  <h3>
+    <strong>Email:</strong>
+    <%= @student.email %>
+  </h3>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+  <h3>
+    <strong>Classes:</strong>
+  </h3>
+
+  <table class="table table-hover table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Percentage</th>
+      <th>Letter Grade</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @student.enrolls.each do |enroll| %>
+        <tr>
+          <td><%= enroll.course.name %></td>
+          <td><%= enroll.percentage %></td>
+          <td><%= enroll.lettergrade %></td>
+          <td><%= link_to 'Remove From Course', enroll, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Edit', edit_student_path(@student) %> |
+  <%= link_to 'Back', students_path %>
+</div>
+

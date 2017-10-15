@@ -1,24 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="container-color">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Percentage:</strong>
-  <%= @enroll.percentage %>
-</p>
+  <h4>
+    <strong>Student:</strong>
+    <%= @enroll.student.name %>
+  </h4>
 
-<p>
-  <strong>Lettergrade:</strong>
-  <%= (@enroll.lettergrade) ? @enroll.lettergrade : 'Not yet set' %>
-</p>
+  <h4>
+    <strong>Course:</strong>
+    <%= @enroll.course.description %>
+  </h4>
 
-<p>
-  <strong>Student:</strong>
-  <%= @enroll.student.name %>
-</p>
+  <h4>
+    <strong>Percentage:</strong>
+    <%= @enroll.percentage %>
+  </h4>
 
-<p>
-  <strong>Course:</strong>
-  <%= @enroll.course.description %>
-</p>
+  <h4>
+    <strong>Lettergrade:</strong>
+    <%= (@enroll.lettergrade) ? @enroll.lettergrade : 'Not yet set' %>
+  </h4>
 
-<%= link_to 'Edit', edit_enroll_path(@enroll) %> |
-<%= link_to 'Back', enrolls_path %>
+
+
+
+
+  <%= link_to 'Edit', edit_enroll_path(@enroll) %> |
+  <%= link_to 'Back', enrolls_path %>
+</div>
+

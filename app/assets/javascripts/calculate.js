@@ -1,14 +1,14 @@
 // constants
 var sections = 12;
-var grades = [65.95, 56.98, 78.62, 96.1, 90.3, 72.24, 92.34, 60.00, 81.43, 86.22, 88.33, 9.03, 9.93, 52.34, 53.11, 50.10, 88.88, 55.32, 55.69, 61.68, 70.44, 70.54, 90.0, 71.11, 80.01];
-//var grades = [50, 60, 70, 80, 90];
+var grades = $('#invisible').data('grades');
+var course = $('#invisible').data('course');
+var letters = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'F'].reverse();
 
 window.onload = function() {
     calculateValues();
 };
 
 function calculateValues(){
-
     // Holds all of the threshold values
     var thresholds = getThresholds();
     var errorFlag = validation(thresholds);
@@ -18,8 +18,9 @@ function calculateValues(){
     // Filter and count
     for (var j = 0; j < thresholds.length-1; j++){
         for (var m = 0; m < grades.length; m++) {
-            if (grades[m] >= thresholds[j] && grades[m] < thresholds[j+1]) {
+            if (grades[m]['percentage'] >= thresholds[j] && grades[m]['percentage'] < thresholds[j+1]) {
                 numberOfStudents[j]++;
+                grades[m]['lettergrade'] = letters[j];
             }
         }
     }
@@ -30,6 +31,7 @@ function calculateValues(){
 // Sets the progress of all of the histogram bars
 function setProgress(errorFlag, dataArray){
     // Set DOM objects
+    console.log(grades);
     for (var k = 0; k < dataArray.length; k++){
         document.getElementById("result" + k + "progress").value = (errorFlag) ? 0 : dataArray[k];
         document.getElementById("result" + k + "progress").max = "" + dataArray.reduce(function (p1, p2) { return Math.max(p1, p2) });
@@ -62,4 +64,31 @@ function validation(thresholds){
 // Forces input into 2 decimal place format
 function formatValues(input) {
     input.value = parseFloat(input.value).toFixed(2);
+}
+
+function saveGrades(){
+    console.log(grades);
+    console.log(course);
+    for (var grade in grades) {
+        console.log(grades[grade]);
+        var enrollToSave = grades[grade]
+        $.ajax({
+            url: '/enrolls/update/'+grades[grade]['id'],
+            type: 'POST',
+            data: { 'enroll':
+                        {'lettergrade': enrollToSave['lettergrade'], 'percentage': enrollToSave['percentage'], 'course': course['id']},
+                    'id': enrollToSave['id']
+                    },
+            success: function(data){
+                alert('Success!')
+            },
+            error: function(data){
+                console.log(data);
+            },
+            done: function(data){
+                console.log(data);
+            }
+        })
+    }
+
 }

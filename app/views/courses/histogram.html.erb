@@ -1,0 +1,136 @@
+<div class="title">Histogram Generator</div>
+<div id="invisible" data-grades="<%= @course.enrolls.to_json %>" data-course="<%= @course.to_json %>"></div>
+<div class="container row">
+
+  <div class="container col-sm-6">
+
+    <div class="red-title">Lower Bounds</div>
+
+    <div class="input-w">
+      <label for="threshold11">Max</label>
+      <input value="100.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold11" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold10">A+</label>
+      <input value="95.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold10" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold9">A</label>
+      <input value="90.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold9" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold8">A-</label>
+      <input value="85.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold8" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold7">B+</label>
+      <input value="80.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold7" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold6">B</label>
+      <input value="75.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold6" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold5">B-</label>
+      <input value="70.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold5" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold4">C+</label>
+      <input value="65.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold4" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold3">C</label>
+      <input value="60.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold3" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold2">C-</label>
+      <input value="55.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold2" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold1">D</label>
+      <input value="50.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold1" />
+    </div>
+
+    <div class="input-w">
+      <label for="threshold0">F</label>
+      <input value="0.00" onchange="formatValues(this)" onkeyup="calculateValues()" type="number" id="threshold0" />
+    </div>
+
+  </div>
+
+  <div class="container col-sm-6">
+
+    <div class="red-title">Histogram</div>
+
+    <div class="hist-element">
+      <label>A+</label>
+      <progress value="0" max="100" id="result10progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>A</label>
+      <progress value="0" max="100" id="result9progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>A-</label>
+      <progress value="0" max="100" id="result8progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>B+</label>
+      <progress value="0" max="100" id="result7progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>B</label>
+      <progress value="0" max="100" id="result6progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>B-</label>
+      <progress value="0" max="100" id="result5progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>C+</label>
+      <progress value="0" max="100" id="result4progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>C</label>
+      <progress value="0" max="100" id="result3progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>C-</label>
+
+      <progress value="0" max="100" id="result2progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>D</label>
+      <progress value="0" max="100" id="result1progress"></progress>
+    </div>
+
+    <div class="hist-element">
+      <label>F</label>
+      <progress value="0" max="100" id="result0progress"></progress>
+    </div>
+
+    <button class="btn btn-primary col-sm-12" onclick="saveGrades()">Save</button>
+  </div>
+</div>
+
+<%= javascript_include_tag 'calculate.js' %>
+

@@ -24,11 +24,10 @@ class EnrollsController < ApplicationController
   # POST /enrolls
   # POST /enrolls.json
   def create
-    params = {:course => Course.find(enroll_params[:course].to_i),
-              :student => Student.find(enroll_params[:student].to_i),
+    params = {:course     => Course.find(enroll_params[:course].to_i),
+              :student    => Student.find(enroll_params[:student].to_i),
               :percentage => enroll_params[:percentage] }
     @enroll = Enroll.new(params)
-
     respond_to do |format|
       if @enroll.save
         format.html { redirect_to @enroll, notice: 'Enroll was successfully created.' }
@@ -43,11 +42,13 @@ class EnrollsController < ApplicationController
   # PATCH/PUT /enrolls/1
   # PATCH/PUT /enrolls/1.json
   def update
+    print(params)
+    print(@enroll.percentage)
     respond_to do |format|
-      params = {:course => Course.find(enroll_params[:course].to_i),
-                :student => Student.find(enroll_params[:student].to_i),
-                :percentage => enroll_params[:percentage] }
-
+      params = {:course     => Course.find(enroll_params[:course].to_i),
+                :student    => Student.find(enroll_params[:student].to_i),
+                :percentage => enroll_params[:percentage],
+                :lettergrade => (enroll_params[:lettergrade]) ? enroll_params[:lettergrade] : nil }
       if @enroll.update(params)
         format.html { redirect_to @enroll, notice: 'Enroll was successfully updated.' }
         format.json { render :show, status: :ok, location: @enroll }
@@ -76,6 +77,6 @@ class EnrollsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enroll_params
-      params.require(:enroll).permit(:percentage, :student, :course)
+      params.require(:enroll).permit(:percentage, :lettergrade, :student, :course)
     end
 end

@@ -1,33 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="container-color">
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Enrolls</h1>
+  <h1>Listing Enrolls</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Percentage</th>
-      <th>Lettergrade</th>
-      <th>Student</th>
-      <th>Course</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @enrolls.each do |enroll| %>
+  <table class="table table-hover table-striped">
+    <thead>
       <tr>
-        <td><%= enroll.percentage %></td>
-        <td><%= (enroll.lettergrade) ? @enroll.lettergrade : 'Not yet set' %></td>
-        <td><%= enroll.student.name %></td>
-        <td><%= enroll.course.description %></td>
-        <td><%= link_to 'Show', enroll %></td>
-        <td><%= link_to 'Edit', edit_enroll_path(enroll) %></td>
-        <td><%= link_to 'Destroy', enroll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Percentage</th>
+        <th>Lettergrade</th>
+        <th colspan="5"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @enrolls.each do |enroll| %>
+        <tr>
+          <td><%= enroll.student.name %></td>
+          <td><%= enroll.course.name %></td>
+          <td><%= enroll.percentage %></td>
+          <td><%= (enroll.lettergrade) ? @enroll.lettergrade : 'Not yet set' %></td>
 
-<%= link_to 'New Enroll', new_enroll_path %>
+          <td><%= link_to 'Show',
+                          enroll,
+                          class: 'btn btn-primary'%></td>
+          <td><%= link_to 'Edit',
+                          edit_enroll_path(enroll),
+                          class: 'btn btn-warning'%></td>
+          <td><%= link_to 'Destroy',
+                          enroll,
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' },
+                          class: 'btn btn-danger'%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Enroll', new_enroll_path %>
+</div>

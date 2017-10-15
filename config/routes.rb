@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :enrolls
   resources :courses
   resources :students
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   get 'say/goodbye'
 
   get 'say/index'
+
+  match 'courses/:id/histogram' => 'courses#histogram',	:via	=>	:get
 
   match	':controller(/:action(/:id))',	:via	=>	:get
   match	':controller(/:action(/:id))',	:via	=>	:post

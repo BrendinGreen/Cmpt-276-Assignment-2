@@ -11,28 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :percentage %><br>
-    <%= f.text_field :percentage %>
-  </div>
-  <div class="field">
+
+  <div class="field form-group">
     <%= f.label :student %><br>
     <%= f.select :student, Student.all.map { |p| [ p.name, p.id ] },
                  :prompt => 'Select One',
                  :required => true,
-                 :selected => (@enroll.student) ? @enroll.student.id : nil
+                 :selected => (@enroll.student) ? @enroll.student.id : nil,
+                 class: 'form-control'
     %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :course %><br>
-    <%= f.select :course, Course.all.map { |p| [ p.description, p.id ] },
+    <%= f.select :course, Course.all.map { |p| [ p.name, p.id ] },
                  :prompt => 'Select One',
                  :required => true,
-                 :selected => (@enroll.course) ? @enroll.course.id : nil
+                 :selected => (@enroll.course) ? @enroll.course.id : nil,
+                 class: 'form-control'
     %>
   </div>
-  <br>
+
+    <div class="field form-group">
+      <%= f.label :percentage %><br>
+      <%= f.text_field :percentage, class: 'form-control', style: 'text-align:left' %>
+    </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :Submit, class: 'btn btn-primary'%>
   </div>
 <% end %>

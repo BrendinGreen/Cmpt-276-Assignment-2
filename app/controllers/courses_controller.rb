@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :histogram]
+  before_action :set_enroll, only: [:assign]
 
   # GET /courses
   # GET /courses.json
@@ -25,6 +26,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
+    print(params)
     @course = Course.new(course_params)
 
     respond_to do |format|
@@ -56,13 +58,19 @@ class CoursesController < ApplicationController
   # DELETE /courses/1.json
   def destroy
 
-    @course.enrolls.select { |e| e.course_id == @course.id }.first.destroy
+    unless @course.enrolls.empty?
+      @course.enrolls.select { |e| e.course_id == @course.id }.first.destroy
+    end
 
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to courses_url, notice: 'Course was successfully deleted.' }
       format.json { head :no_content }
     end
+  end
+
+  def histogram
+    @enrolls = Enroll.where(:course_id => @course.id)
   end
 
   private
@@ -73,6 +81,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:description)
+      params.require(:course).permit(:name, :description)
     end
 end
