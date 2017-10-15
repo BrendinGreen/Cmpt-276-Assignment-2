@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b22a9006-9146-42fe-ad87-a0b1f3600bee" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/calculate.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/calculate.js" />
-    </list>
+    <list default="true" id="b22a9006-9146-42fe-ad87-a0b1f3600bee" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -22,8 +19,8 @@
       <file leaf-file-name="calculate.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/calculate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="698">
-              <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+            <state relative-caret-position="353">
+              <caret line="66" column="53" lean-forward="true" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -367,12 +364,12 @@
       <workItem from="1506741759614" duration="3000" />
       <workItem from="1507651572434" duration="5459000" />
       <workItem from="1507774544041" duration="4541000" />
-      <workItem from="1507906172075" duration="36232000" />
+      <workItem from="1507906172075" duration="36318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74779000" />
+    <option name="totallyTimeSpent" value="74865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -815,8 +812,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/calculate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+        <state relative-caret-position="353">
+          <caret line="66" column="53" lean-forward="true" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
           <folding />
         </state>
       </provider>
