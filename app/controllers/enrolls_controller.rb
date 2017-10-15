@@ -24,9 +24,14 @@ class EnrollsController < ApplicationController
   # POST /enrolls
   # POST /enrolls.json
   def create
-    params = {:course     => Course.find(enroll_params[:course].to_i),
-              :student    => Student.find(enroll_params[:student].to_i),
+
+    course = enroll_params[:course] == '' ? nil : Course.find(enroll_params[:course].to_i)
+    student = enroll_params[:student] == '' ? nil : Student.find(enroll_params[:student].to_i)
+
+    params = {:course     => course,
+              :student    => student,
               :percentage => enroll_params[:percentage] }
+
     @enroll = Enroll.new(params)
     respond_to do |format|
       if @enroll.save
@@ -42,11 +47,13 @@ class EnrollsController < ApplicationController
   # PATCH/PUT /enrolls/1
   # PATCH/PUT /enrolls/1.json
   def update
+
+    params = {:course     => Course.find(enroll_params[:course].to_i),
+              :student    => Student.find(enroll_params[:student].to_i),
+              :percentage => enroll_params[:percentage],
+              :lettergrade => (enroll_params[:lettergrade]) ? enroll_params[:lettergrade] : nil }
+
     respond_to do |format|
-      params = {:course     => Course.find(enroll_params[:course].to_i),
-                :student    => Student.find(enroll_params[:student].to_i),
-                :percentage => enroll_params[:percentage],
-                :lettergrade => (enroll_params[:lettergrade]) ? enroll_params[:lettergrade] : nil }
       if @enroll.update(params)
         format.html { redirect_to courses_url, notice: 'Enroll was successfully updated.' }
         format.json { render :show, status: :ok, location: @enroll }
