@@ -4,10 +4,6 @@ var grades = $('#invisible').data('grades');
 var course = $('#invisible').data('course');
 var letters = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'F'].reverse();
 
-$(document).ready(function () {
-    calculateValues();
-});
-
 function calculateValues(){
 
     // Holds all of the threshold values
@@ -34,8 +30,7 @@ function setProgress(errorFlag, dataArray){
     // Set DOM objects
     console.log(grades);
     for (var k = 0; k < dataArray.length; k++){
-        document.getElementById("result" + k + "progress").value = (errorFlag) ? 0 : dataArray[k];
-        document.getElementById("result" + k + "progress").max = "" + dataArray.reduce(function (p1, p2) { return Math.max(p1, p2) });
+        document.getElementById("result" + k + "progress").value = (errorFlag) ? 0 : dataArray[k]*100/dataArray.reduce(function (p1, p2) { return p1+p2 });
     }
 }
 
@@ -76,10 +71,8 @@ function saveGrades(){
         $.ajax({
             url: '/enrolls/update/'+grades[grade]['id'],
             type: 'POST',
-            data: { 'enroll':
-                        {'lettergrade': enrollToSave['lettergrade'], 'percentage': enrollToSave['percentage'], 'course': course['id'], 'student': enrollToSave['student_id']},
-                    'id': enrollToSave['id']
-                    },
+            data: { 'enroll': {'lettergrade': enrollToSave['lettergrade'], 'percentage': enrollToSave['percentage'], 'course': course['id'], 'student': enrollToSave['student_id']},
+                    'id': enrollToSave['id']},
             error: function(data){
                 console.log(data);
             },
